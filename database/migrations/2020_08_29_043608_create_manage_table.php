@@ -17,10 +17,11 @@ class CreateManageTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('harga');
-            $table->text('lokasi');
+            $table->text('alamat');
             $table->integer('provinsi_id')->unsigned();
             $table->foreign('provinsi_id')->references('id')->on('provinsi')->onDelete('CASCADE');
-            $table->string('kota');
+            $table->integer('kota_id')->unsigned();
+            $table->foreign('kota_id')->references('id')->on('kota')->onDelete('CASCADE');
             $table->string('gambar');
             $table->timestamps();
         });

@@ -1,6 +1,8 @@
 @extends('manages.layout')
  
 @section('content')
+<br>
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -31,7 +33,7 @@
             <td>{{ ++$i }}</td>
             <td>{{ $m->nama }}</td>
             <td>{{ $m->harga }}</td>
-            <td>{{ $m->kota }} - {{ $m->provinsi->nama }}</td>
+            <td>{{ $m->provinsi->nama }} - {{ $m->provinsi->nama }}</td>
             <td>
                 <form action="{{ route('manages.destroy',$m->id) }}" method="POST">                    
     

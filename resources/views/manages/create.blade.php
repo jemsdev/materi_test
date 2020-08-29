@@ -57,8 +57,9 @@
                 <div class="form-group">
                     <strong>Kota:</strong>
                     <select name="kota" id="" class="form-control">
-                        <option value="Bogor">Bogor</option>
-                        <option value="Medan">Medan</option>
+                        @foreach ($kota as $k)
+                        <option value="{{$k->id}}">{{$k->nama}}</option>                        
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
@@ -68,7 +69,7 @@
             </div>
             
             <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                    <button type="submit" class="btn btn-primary">Tambah Wisata</button>
+            <button type="submit" class="btn btn-primary">Tambah Wisata</button>
             </div>
         </div>
     </div>

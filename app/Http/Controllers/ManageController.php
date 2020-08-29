@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Manage;
 use App\Provinsi;
+use App\Kota;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -16,9 +17,9 @@ class ManageController extends Controller
      */
     public function index()
     {
-        $manage = Manage::with('provinsi')->latest()->paginate(5);
+        $manage = Manage::with('provinsi', 'kota')->latest()->paginate(5);
   
-        return view('manages.index',compact('manage'))
+        return view('home',compact('manage'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -34,7 +35,8 @@ class ManageController extends Controller
     public function create()
     {
         $provinsi = Provinsi::all();
-        return view('manages.create',compact('provinsi'));
+        $kota = Kota::all();
+        return view('manages.create',compact('provinsi', 'kota'));
     }
 
     /**
@@ -62,7 +64,7 @@ class ManageController extends Controller
                 'harga' => $request->harga, 
                 'alamat' => $request->alamat,
                 'provinsi_id' => $request->provinsi,
-                'kota' => $request->kota,
+                'kota_id' => $request->kota,
                 'gambar' => $namaFile
             ]);
    
@@ -90,7 +92,8 @@ class ManageController extends Controller
     public function edit(Manage $manage)
     {
         $provinsi = Provinsi::all();
-        return view('manages.edit',compact('manage','provinsi'));
+        $kota = Kota::all();
+        return view('manages.edit',compact('manage','provinsi', 'kota'));
     }
 
     /**
@@ -119,7 +122,7 @@ class ManageController extends Controller
                 'harga' => $request->harga, 
                 'alamat' => $request->alamat,
                 'provinsi_id' => $request->provinsi,
-                'kota' => $request->kota,
+                'kota_id' => $request->kota,
                 'gambar' => $manage->gambar
                 ]);
                 return redirect()->route('manages.index')
@@ -133,7 +136,7 @@ class ManageController extends Controller
                 'harga' => $request->harga, 
                 'alamat' => $request->alamat,
                 'provinsi_id' => $request->provinsi,
-                'kota' => $request->kota,
+                'kota_id' => $request->kota,
                 'gambar' => $namaFile
             ]); 
             return redirect()->route('manages.index')

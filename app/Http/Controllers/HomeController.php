@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Manage;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $manage = Manage::with('provinsi', 'kota')->latest()->paginate(5);
+  
+        return view('home',compact('manage'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

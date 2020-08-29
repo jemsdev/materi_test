@@ -106,7 +106,7 @@
                         <img class="card-img-top" src="{{ asset('/upload/'.$item->gambar) }}" alt="Card image cap">
                             <div class="card-body text-left">
                             <h5 class="card-title ">{{ $item->nama }}</h5>
-                              <p class="card-text">{{$item->kota}} - {{$item->provinsi->nama}}</p>
+                              <p class="card-text">{{$item->kota->nama}} - {{$item->provinsi->nama}}</p>
                               <p class="card-text">Tiket Masuk : Rp. {{$item->harga}}</p>
                             <a href="{{ route('detail',$item->id) }}" class="btn btn-primary">Detail</a>
                             </div>

@@ -65,41 +65,6 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">                       
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/manages">Manage Wisata</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Ganti Password</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Logout</a>
-                </li>
-              </ul>
-            </div>
-             
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif   
-          </nav>
         <div class="container position-ref mt-5">          
             <div class="content">
                 <h1 class="text-center  mb-5">{{$manage->nama}}</h1>
@@ -107,25 +72,28 @@
                     <div class="col-md-6">
                         <div class="card bg-dark text-white">
                             <img class="card-img" src="{{asset('upload/'.$manage->gambar)}}" alt="Card image">
-                            <div class="card-img-overlay">
-                              {{-- <h5 class="card-title">Card title</h5>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <p class="card-text">Last updated 3 mins ago</p> --}}
+                            <div class="card-img-overlay">                             
                             </div>
                           </div>
                     </div>
                     <div class="col-md-6">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6664270099245!2d106.82495874902257!3d-6.1753923955072105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1598707464937!5m2!1sid!2sid" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <div class="card bg-dark text-white">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6664270099245!2d106.82495874902257!3d-6.1753923955072105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1598707464937!5m2!1sid!2sid" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                          </div>
+                        
                     </div>
                 </div>
 
                 <div class="detail mt-5 mb-5 float-left">
-                    <h4 class="text-left">Lokasi : {{ $manage->kota }} - {{$manage->provinsi }}</h4>
-                    <h4>Harga Tiket Masuk : Rp. {{$manage->harga}}</h4>
-                    <h5 class="text-left">{{ $manage->alamat }}</h5>
+                    <h4 class="text-left">Lokasi : {{ $manage->kota->nama }} - {{$manage->provinsi->nama }}</h4>
+                    <p class="text-left">Harga Tiket Masuk : Rp. {{$manage->harga}}</p>
+                    <p class="text-left">{{ $manage->alamat }}</p>
                 </div>
-                <div class="title m-b-md">
-                    
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <a href="/" class="btn btn-primary">Kembali ke Home</a>
+                </div>
+
+                <div class="title m-b-md">                    
                 </div>               
                 <br><br><br><br>    
             </div>
